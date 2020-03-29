@@ -2,6 +2,8 @@
 
 ## Unreleased changes
 
-## v0.0.1
+## v0.1.0
+
+* Inclusion of more functions from text.
 
 * Initial release.

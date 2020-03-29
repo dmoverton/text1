@@ -1,18 +1,14 @@
 name:                text1
 version:             0.1.0.0
-github:              seek-oss/text1
-license:             BSD3
+github:              tmortiboy/text1
+license:             MIT
 author:              Tom Mortiboy
 maintainer:          Tom Mortiboy
-copyright:           2020 SEEK
+copyright:           2020 seek-oss, 2020 text1 contributors
 
 extra-source-files:
 - README.md
 - ChangeLog.md
-
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
 
 description:         Please see the README on GitHub at <https://github.com/seek-oss/text1#readme>
 
@@ -26,11 +22,13 @@ dependencies:
 - deepseq
 - hashable
 - lens
+- positive
 - QuickCheck
 - quickcheck-instances
 - scientific
 - servant
 - text
+- these
 - uuid-types
 
 library:
