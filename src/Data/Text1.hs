@@ -412,8 +412,8 @@ compareLength text1 n = coerce (`T.compareLength` n) text1
 -- Just "I am not angry! Not at all!"
 --
 -- Performs replacement on invalid scalar values.
-map :: (Char -> Char) -> Text1 -> Maybe Text1
-map f = textToText1M . coerce (T.map f)
+map :: (Char -> Char) -> Text1 -> Text1
+map f = coerce (T.map f)
 {-# INLINE map #-}
 
 
