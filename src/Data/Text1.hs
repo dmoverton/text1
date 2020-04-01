@@ -22,7 +22,9 @@ module Data.Text1
 
   -- * Basic interface
   , cons
+  , cons'
   , snoc
+  , snoc'
   , append
   , uncons
   , unsnoc
@@ -252,7 +254,7 @@ instance Semigroup Text1 where
 
 instance Arbitrary Text1 where
   arbitrary =
-    cons
+    cons'
       <$> arbitrary
       <*> arbitrary
   shrink = mapMaybe textToText1M . shrink . text1ToText
@@ -325,12 +327,28 @@ cons = coerce T.cons
 
 infixr 5 `cons`
 
+-- | /O(n)/ Adds a character to the front of a 'Text'.  This function
+-- is more costly than its 'List' counterpart because it requires
+-- copying a new array.  Performs replacement on invalid scalar values.
+cons' :: Char -> Text -> Text1
+cons' = coerce T.cons
+{-# INLINE cons' #-}
+
+infixr 5 `cons'`
+
 -- | /O(n)/ Adds a character to the end of a 'Text'.  This copies the
 -- entire array in the process.
 -- Performs replacement on invalid scalar values.
 snoc :: Text1 -> Char -> Text1
 snoc text1 char = coerce (`T.snoc` char) text1
 {-# INLINE snoc #-}
+
+-- | /O(n)/ Adds a character to the end of a 'Text'.  This copies the
+-- entire array in the process.
+-- Performs replacement on invalid scalar values.
+snoc' :: Text1 -> Char -> Text1
+snoc' text char = coerce (`T.snoc` char) text
+{-# INLINE snoc' #-}
 
 -- | /O(n)/ Appends one 'Text1' to the other by copying both of them
 -- into a new 'Text1'.

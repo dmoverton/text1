@@ -35,13 +35,13 @@ spec = parallel $ do
     prop "Arbitrary Should generate only valid Text1" $ \text1 ->
       textToText1M (text1ToText text1) `shouldBe` Just text1
 
-    it "Should throw an error in fromText instance for empty strings" $
+    it "Should throw an error in IsString instance for empty strings" $
       evaluate (S.fromString "" :: Text1) `shouldThrow` anyErrorCall
 
-    it "Should throw an error in fromText instance for empty string literals" $
+    it "Should throw an error in IsString instance for empty string literals" $
       evaluate ("" :: Text1) `shouldThrow` anyErrorCall
 
-    it "Should allow whitespace in fromText instance" $ do
+    it "Should allow whitespace in IsString instance" $ do
       text1ToText (S.fromString " ") `shouldBe` (" " :: T.Text)
       text1ToText (S.fromString "\t") `shouldBe` ("\t" :: T.Text)
 
